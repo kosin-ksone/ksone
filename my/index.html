@@ -104,7 +104,7 @@ footer{color:var(--mute);font-size:12px;text-align:center}
    <div class="recent" id="recent"><span class="empty">ยังไม่มี · กดปุ่มไหนแล้วจะมาโผล่ตรงนี้ค่ะ</span></div>
   </section>
   <div id="groups"></div>
-  <footer>MY APP v1.0 · 26 ต.ค. 69 · Developed by fonkosin</footer>
+  <footer>MY APP v1.1 · 26 ต.ค. 69 · Developed by fonkosin</footer>
  </div>
 </div>
 <div id="view" hidden>
@@ -177,6 +177,8 @@ window.addEventListener("message",function(ev){var d=ev.data;if(!d||d.ksone!=="n
  if(!/^https:\/\/script\.google\.com\//.test(d.url))return;
  if(/[?&]menu=1/.test(d.url)&&cur.indexOf("menu=1")<0){goHome();return;}
  openIn($("vname").textContent,d.url);});
+/* ลิงก์ตั้งค่าครั้งเดียว: …/my/#kosie=<รหัส> → จำลิงก์ KOSIE ในเครื่อง แล้วลบออกจากแถบที่อยู่ (รหัสไม่อยู่ในโค้ด) */
+(function(){var m=/^#kosie=([0-9a-f]{16,64})$/.exec(location.hash||"");if(!m)return;ls("my_kosie",UB+"?p=kosie&k="+m[1]);try{history.replaceState(null,"",location.pathname);}catch(e){location.hash="";}})();
 $("q").addEventListener("input",function(){draw(this.value);});
 (function(){var h=new Date().getHours();$("greet").textContent=h<12?"อรุณสวัสดิ์ค่ะพี่ฝน ☀︎":h<17?"สวัสดีตอนบ่ายค่ะพี่ฝน ✿":"เย็นแล้วน้าพี่ฝน ☾";})();
 draw("");drawRecent();
